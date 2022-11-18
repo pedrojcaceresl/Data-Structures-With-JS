@@ -24,14 +24,15 @@ class Stack {
     return ++this.size;
   }
   pop() {
-    if (!this.first) return null;
-    let poppedNode = this.first;
+    if (!this.first) return undefined;
+    let removedNode = this.first;
     if (this.first === this.last) {
       this.last = null;
+    } else {
+      this.first = this.first.next;
     }
-    this.first = poppedNode.next;
     this.size--;
-    return poppedNode.value;
+    return removedNode;
   }
 
   print() {
@@ -47,5 +48,4 @@ stack = new Stack();
 stack.push("FIRST");
 stack.push("SECOND");
 stack.push("THIRD");
-console.log(stack.pop());
-console.log(stack.pop());
+stack.print();
